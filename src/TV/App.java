@@ -6,53 +6,57 @@ import java.util.Random;
 public class App {
     public static void main (String[] args) {
 
+        //Часть значений сгенерим, часть введём руками
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Опишите телевизор в гостиной");
+        //Дабы не множить сущности, выносим определение аргументов в отдельные методы
         String manufacturer = manufacturer(scanner);
         int diagonal = diagonal(random);
         String color = color(random);
 
-        TV tv_lr = new TV(color, diagonal, manufacturer);
+        TV tv_living_room = new TV(color, diagonal, manufacturer); //Определяем состояние экземпляра
 
-        if (tv_lr.isItBigTV()) {
+        if (tv_living_room.isItBigTV()) { //Ну надо же где-то использовать этот метод, зря я его что ли писал :-)
             System.out.println("У вас большой телевизор в гостиной!");
         }
 
         String channel = channel(scanner);
         if (channel.isEmpty()) {
-            tv_lr.isWork(false);
+            tv_living_room.isWork(false);
         } else {
             int channel_int = Integer.parseInt(channel);
-            tv_lr.isWork(channel_int);
+            tv_living_room.isWork(channel_int);
         }
 
-        System.out.println("");
+        System.out.println();
         System.out.println("Теперь опишите телевизор в спальне");
+        //Переопределяем переменные
         manufacturer = manufacturer(scanner);
         diagonal = diagonal(random);
         color = color(random);
 
-        TV tv_br = new TV(color, diagonal, manufacturer);
+        TV tv_bedroom = new TV(color, diagonal, manufacturer); //Создаём новый экземпляр того же класса
 
-        if (tv_br.isItBigTV()) {
+        //Ниже всё по аналогии, но с другим экземпляром
+
+        if (tv_bedroom.isItBigTV()) {
             System.out.println("У вас большой телевизор в спальне!");
         }
 
         channel = channel(scanner);
         if (channel.isEmpty()) {
-            tv_br.isWork(false);
+            tv_bedroom.isWork(false);
         } else {
             int channel_int = Integer.parseInt(channel);
-            tv_br.isWork(channel_int);
+            tv_bedroom.isWork(channel_int);
         }
     }
 
     public static String manufacturer(Scanner scanner) {
         System.out.print("Введите производителя телевизора: ");
-        String manufacturer = scanner.nextLine();
-        return manufacturer;
+        return scanner.nextLine();
     }
 
     public static int diagonal(Random random) {
@@ -73,7 +77,6 @@ public class App {
 
     public static String channel(Scanner scanner) {
         System.out.print("Какой канал сейчас включен? Если телевизор выключен, то нажмите Ввод: ");
-        String channel = scanner.nextLine();
-        return channel;
+        return scanner.nextLine();
     }
 }
