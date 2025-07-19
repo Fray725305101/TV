@@ -9,16 +9,9 @@ public class App {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Введите производителя телевизора в гостиной: ");
-        String manufacturer = scanner.nextLine();
-
-        int[] diagonalArr = {43, 50, 55, 60, 65, 70, 75, 80, 95, 110};
-        int diagonalIdx = random.nextInt(9);
-        int diagonal = diagonalArr[diagonalIdx];
-        System.out.print("Диагональ телевизора в гостиной (сгенерировано): "+diagonal);
-
-        System.out.print("Введите цвет телевизора в гостиной: ");
-        String color = scanner.nextLine();
+        String manufacturer = manufacturer(scanner);
+        int diagonal = diagonal(random);
+        String color = color(scanner);
 
         TV tv_lr = new TV(color, diagonal, manufacturer);
 
@@ -36,5 +29,25 @@ public class App {
             tv_lr.isWork(channel_int);
         }
 
+    }
+
+    public static String manufacturer(Scanner scanner) {
+        System.out.print("Введите производителя телевизора: ");
+        String manufacturer = scanner.nextLine();
+        return manufacturer;
+    }
+
+    public static int diagonal(Random random) {
+        int[] diagonalArr = {43, 50, 55, 60, 65, 70, 75, 80, 95, 110};
+        int diagonalIdx = random.nextInt(9);
+        int diagonal = diagonalArr[diagonalIdx];
+        System.out.println("Диагональ телевизора (сгенерировано): "+diagonal);
+        return diagonal;
+    }
+
+    public static String color(Scanner scanner) {
+        System.out.print("Введите цвет телевизора: ");
+        String color = scanner.nextLine();
+        return color;
     }
 }
