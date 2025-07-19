@@ -28,6 +28,7 @@ public class App {
             tv_lr.isWork(channel_int);
         }
 
+        System.out.println("");
         System.out.println("Теперь опишите телевизор в спальне");
         manufacturer = manufacturer(scanner);
         diagonal = diagonal(random);
@@ -41,10 +42,10 @@ public class App {
 
         channel = channel(scanner);
         if (channel.isEmpty()) {
-            tv_lr.isWork(false);
+            tv_br.isWork(false);
         } else {
             int channel_int = Integer.parseInt(channel);
-            tv_lr.isWork(channel_int);
+            tv_br.isWork(channel_int);
         }
     }
 
