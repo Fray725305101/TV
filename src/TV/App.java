@@ -9,19 +9,18 @@ public class App {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Опишите телевизор в гостиной");
         String manufacturer = manufacturer(scanner);
         int diagonal = diagonal(random);
-        String color = color(scanner);
+        String color = color(random);
 
         TV tv_lr = new TV(color, diagonal, manufacturer);
 
         if (tv_lr.isItBigTV()) {
-            System.out.println("У вас большой телевизор!");
+            System.out.println("У вас большой телевизор в гостиной!");
         }
 
-        System.out.print("Какой канал сейчас включен? Если телевизор выключен, то нажмите Ввод: ");
-        String channel = scanner.nextLine();
-
+        String channel = channel(scanner);
         if (channel.isEmpty()) {
             tv_lr.isWork(false);
         } else {
@@ -29,6 +28,24 @@ public class App {
             tv_lr.isWork(channel_int);
         }
 
+        System.out.println("Теперь опишите телевизор в спальне");
+        manufacturer = manufacturer(scanner);
+        diagonal = diagonal(random);
+        color = color(random);
+
+        TV tv_br = new TV(color, diagonal, manufacturer);
+
+        if (tv_br.isItBigTV()) {
+            System.out.println("У вас большой телевизор в спальне!");
+        }
+
+        channel = channel(scanner);
+        if (channel.isEmpty()) {
+            tv_lr.isWork(false);
+        } else {
+            int channel_int = Integer.parseInt(channel);
+            tv_lr.isWork(channel_int);
+        }
     }
 
     public static String manufacturer(Scanner scanner) {
@@ -45,9 +62,17 @@ public class App {
         return diagonal;
     }
 
-    public static String color(Scanner scanner) {
-        System.out.print("Введите цвет телевизора: ");
-        String color = scanner.nextLine();
+    public static String color(Random random) {
+        String[] colorArr = {"белый", "черный", "серый", "сюзюлевый"};
+        int colorIdx = random.nextInt(3);
+        String color = colorArr[colorIdx];
+        System.out.println("Цвет телевизора (сгенерировано): "+color);
         return color;
+    }
+
+    public static String channel(Scanner scanner) {
+        System.out.print("Какой канал сейчас включен? Если телевизор выключен, то нажмите Ввод: ");
+        String channel = scanner.nextLine();
+        return channel;
     }
 }
