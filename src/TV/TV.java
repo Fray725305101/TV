@@ -15,9 +15,7 @@ public class TV {
 
     //Метод для определения, включен телевизор или нет
     public void isWork(boolean condition) {
-        if (condition) {
-            System.out.println("Ваш " + color + " телевизор " + manufacturer + " " + diagonal + "\" включен");
-        } else {
+        if (!condition) {
             System.out.println("Ваш " + color + " телевизор " + manufacturer + " " + diagonal + "\" выключен");
         }
     }
