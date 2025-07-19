@@ -7,12 +7,13 @@ public class TV {
     private String manufacturer;
 
     //Конструктор
-    public TV(String col, int d, String m) {
-        color = col;
-        diagonal = d;
-        manufacturer = m;
+    public TV(String color, int diagonal, String manufacturer) {
+        this.color = color;
+        this.diagonal = diagonal;
+        this.manufacturer = manufacturer;
     }
 
+    //Метод для определения, включен телевизор или нет
     public void isWork(boolean condition) {
         if (condition) {
             System.out.println("Ваш " + color + " телевизор " + manufacturer + " " + diagonal + "\" включен");
@@ -21,10 +22,12 @@ public class TV {
         }
     }
 
+    //Перегрузка метода, показывает, какой канал включен
     public void isWork(int channel) {
-        System.out.println("Ваш " + color + " телевизор " + manufacturer + " " + diagonal + "\" показывает канал " + channel);
+        System.out.println("Ваш " + color + " телевизор " + manufacturer + " " + diagonal + "\" включен и показывает канал " + channel);
     }
 
+    //Метод проверки, большой телевизор или нет
     public boolean isItBigTV() {
         return diagonal >= 65;
     }
