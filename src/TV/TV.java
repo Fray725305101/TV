@@ -1,17 +1,19 @@
 package TV;
 
 public class TV {
-    String color;
-    int diagonal;
-    String manufacturer;
-    boolean condition;
-    int channel;
+    //Блок параметров
+    private String color;
+    private int diagonal;
+    private String manufacturer;
 
-    public void isWork(String col, String m, int d, boolean cond) {
+    //Конструктор
+    public TV(String col, int d, String m) {
         color = col;
-        manufacturer = m;
         diagonal = d;
-        condition = cond;
+        manufacturer = m;
+    }
+
+    public void isWork(boolean condition) {
         if (condition) {
             System.out.println("Ваш " + color + " телевизор " + manufacturer + " " + diagonal + "\" включен");
         } else {
@@ -19,20 +21,11 @@ public class TV {
         }
     }
 
-    public void isWork(String col, String m, int d, int c) {
-        color = col;
-        manufacturer = m;
-        diagonal = d;
-        channel = c;
+    public void isWork(int channel) {
         System.out.println("Ваш " + color + " телевизор " + manufacturer + " " + diagonal + "\" показывает канал " + channel);
     }
 
-    public boolean isItBigTV(int d) {
-        diagonal = d;
+    public boolean isItBigTV() {
         return diagonal >= 65;
     }
-
-
-
-
 }
